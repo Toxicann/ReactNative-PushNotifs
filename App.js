@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
 import { StyleSheet, Text, View, Button, Platform } from "react-native";
@@ -13,15 +13,33 @@ Notifications.setNotificationHandler({
 
 const App = () => {
   const [expoPushToken, setExpoPushToken] = useState("");
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
       setExpoPushToken(token)
     );
-    // Notifications.addNotificationReceivedListener((notification) => {
-    //   alert(`we received a notification`);
-    // });
-    // console.log(expoPushToken);
-  }, []);
+
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) => {
+        setNotification(notification);
+        console.log(notification.date);
+      });
+
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        // console.log(response);
+        alert(`we received it ${response}`);
+      });
+    return () => {
+      Notifications.removeNotificationSubscription(
+        notificationListener.current
+      );
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, [notification.date]);
 
   return (
     <View style={styles.container}>
