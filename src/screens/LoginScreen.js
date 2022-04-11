@@ -14,9 +14,10 @@ const LoginScreen = () => {
         <CardButton iconName="google" />
         <CardButton iconName="facebook" />
       </View>
-      <InputText />
-      <InputText />
-      <InputText />
+      <View style={{ alignItems: "stretch", justifyContent: "flex-start" }}>
+        <InputText title="Name" />
+        <InputText title="Password" />
+      </View>
     </View>
   );
 };
@@ -26,7 +27,7 @@ const style = StyleSheet.create({
     justifyContent: "space-around",
     marginTop: 8,
     flex: 1,
-    // flexWrap: "wrap",
+    flexWrap: "wrap",
   },
   textDesc: {
     color: "#b3b3b3",
