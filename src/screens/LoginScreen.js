@@ -18,33 +18,59 @@ const LoginScreen = () => {
         <InputText title="Name" />
         <InputText title="Password" />
       </View>
-      <Button title="Login" />
+      <TouchableOpacity style={style.button}>
+        <Text style={{ fontSize: 20, color: "white" }}>Login</Text>
+      </TouchableOpacity>
+      <View style={style.text}>
+        <Text style={style.textDesc}>Don't have an account?</Text>
+        <TouchableOpacity>
+          <Text style={style.signup}>Sign up</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const style = StyleSheet.create({
   scaffold: {
-    marginTop: 8,
+    marginTop: 60,
     position: "absolute",
     height: "100%",
     width: "100%",
   },
+
   textDesc: {
     color: "#b3b3b3",
     paddingLeft: 10,
   },
+
   cardRow: {
-    marginVertical: 40,
+    marginVertical: 30,
     flexDirection: "row",
     justifyContent: "space-around",
-    // height: "10%",
-    // width: "45%",
   },
+
   input: {
-    // alignItems: "stretch",
-    // justifyContent: "flex-start",
-    marginVertical: 20,
+    marginVertical: 30,
+  },
+
+  text: {
+    flexDirection: "row",
+    marginTop: 10,
+  },
+
+  signup: {
+    paddingLeft: 5,
+    color: "white",
+  },
+
+  button: {
+    borderRadius: 20,
+    backgroundColor: "#8c10ab",
+    height: 70,
+    marginHorizontal: 12,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
