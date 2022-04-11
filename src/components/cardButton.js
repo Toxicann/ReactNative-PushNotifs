@@ -13,6 +13,7 @@ const CardButton = (props) => {
 const style = StyleSheet.create({
   card: {
     backgroundColor: "#171717",
+    height: 70,
     width: "45%",
     borderColor: "#212121",
     borderWidth: 3,

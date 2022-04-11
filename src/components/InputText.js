@@ -1,5 +1,18 @@
 import React from "react";
 import { Text, View, TextInput, StyleSheet } from "react-native";
+import { borderColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+
+// const onFocus = () => {
+//   this.setState({
+//     backgroundColor: "green",
+//   });
+// };
+
+// onBlur = () =>{
+//   this.setState({
+//     backgroundColor: '#ededed'
+//   })
+// };
 
 const InputText = (props) => {
   return (
@@ -18,8 +31,8 @@ const style = StyleSheet.create({
   },
   input: {
     backgroundColor: "#171717",
-    height: "28%",
-    width: "90%",
+    height: 70,
+    // width: "90%",
     borderColor: "#212121",
     borderWidth: 3,
     borderRadius: 20,
