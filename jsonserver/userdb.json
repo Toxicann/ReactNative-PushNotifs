@@ -1,0 +1,10 @@
+{
+  "credits": [
+    {
+      "username": "test",
+      "email": "email.com",
+      "password": "12345",
+      "id": 1
+    }
+  ]
+}

@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 import CardButton from "../components/cardButton";
 import InputText from "../components/InputText";
+import api from "../api/api";
 
 const SignupScreen = ({ navigation }) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <View style={style.scaffold}>
       <Image
@@ -19,11 +24,38 @@ const SignupScreen = ({ navigation }) => {
         <CardButton iconName="facebook" />
       </View>
       <View style={style.input}>
-        <InputText title="Name" placeholder="Enter Name" />
-        <InputText title="Email" placeholder="Enter Email" />
-        <InputText title="Password" placeholder="Enter Password" />
+        <InputText
+          title="Name"
+          placeholder="Enter Name"
+          onSubmit={(data) => {
+            setUsername(data);
+          }}
+        />
+        <InputText
+          title="Email"
+          placeholder="Enter Email"
+          onSubmit={(data) => {
+            setEmail(data);
+          }}
+        />
+        <InputText
+          title="Password"
+          placeholder="Enter Password"
+          onSubmit={(data) => {
+            setPassword(data);
+          }}
+        />
       </View>
-      <TouchableOpacity style={style.button}>
+      <TouchableOpacity
+        style={style.button}
+        onPress={async () => {
+          await api.post("/credits", {
+            username,
+            email,
+            password,
+          });
+        }}
+      >
         <Text style={{ fontSize: 20, color: "white" }}>Sign up</Text>
       </TouchableOpacity>
       <View style={style.text}>

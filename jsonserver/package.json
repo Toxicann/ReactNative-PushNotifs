@@ -1,0 +1,17 @@
+{
+  "name": "jsonserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dbstart" : "json-server -w userdb.json",
+    "tunnel" : "ngrok http 3000",
+    "auth" : "ngrok authtoken 27KBt0uz5xmajfKZDuQW4qkAchd_5ikCagCSw88WUvMvkPmTH"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.0",
+    "ngrok": "^4.3.1"
+  }
+}

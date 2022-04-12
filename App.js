@@ -33,7 +33,7 @@ const App = () => {
     return (
       <NavigationContainer theme={MyTheme}>
         <Stack.Navigator
-          initialRouteName="Notification"
+          initialRouteName="Login"
           screenOptions={{
             headerStyle: {
               elevation: 5,
