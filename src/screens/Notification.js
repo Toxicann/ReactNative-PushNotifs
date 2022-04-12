@@ -25,7 +25,6 @@ const Notification = ({ navigation }) => {
     notificationListener.current =
       Notifications.addNotificationReceivedListener((notification) => {
         setNotification(notification);
-        console.log(notification.date);
       });
 
     responseListener.current =
@@ -47,7 +46,9 @@ const Notification = ({ navigation }) => {
         title="Show DateTime!"
         onPress={async () => {
           await sendPushNotification(expoPushToken);
-          console.log(expoPushToken);
+          // console.log(expoPushToken);
+          // console.log(notificationData);
+          // navigation.navigate("Login");
         }}
       />
     </View>

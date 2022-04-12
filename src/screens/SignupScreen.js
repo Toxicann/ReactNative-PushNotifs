@@ -1,13 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-// import { useDispatch } from "react-redux";
-// import { bindActionCreators } from "redux";
-// import { actionCreators } from "../state/index";
 
 import CardButton from "../components/cardButton";
 import InputText from "../components/InputText";
 
-const LoginScreen = ({ navigation }) => {
+const SignupScreen = ({ navigation }) => {
   return (
     <View style={style.scaffold}>
       <Image
@@ -15,27 +12,28 @@ const LoginScreen = ({ navigation }) => {
         style={{ alignSelf: "center", marginBottom: 15 }}
       />
       <Text style={style.textDesc}>
-        Log in with one of the following options.
+        Sign up with one of the following options.
       </Text>
       <View style={style.cardRow}>
         <CardButton iconName="google" />
         <CardButton iconName="facebook" />
       </View>
       <View style={style.input}>
+        <InputText title="Name" placeholder="Enter Name" />
         <InputText title="Email" placeholder="Enter Email" />
         <InputText title="Password" placeholder="Enter Password" />
       </View>
       <TouchableOpacity style={style.button}>
-        <Text style={{ fontSize: 20, color: "white" }}>Log in</Text>
+        <Text style={{ fontSize: 20, color: "white" }}>Sign up</Text>
       </TouchableOpacity>
       <View style={style.text}>
-        <Text style={style.textDesc}>Don't have an account?</Text>
+        <Text style={style.textDesc}>Already have an account?</Text>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Signup");
+            navigation.navigate("Login");
           }}
         >
-          <Text style={style.signup}>Sign up</Text>
+          <Text style={style.signup}>Log in</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -56,7 +54,7 @@ const style = StyleSheet.create({
   },
 
   cardRow: {
-    marginVertical: 15,
+    marginVertical: 20,
     flexDirection: "row",
     justifyContent: "space-around",
   },
@@ -85,4 +83,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default SignupScreen;

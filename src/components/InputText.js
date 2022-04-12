@@ -11,9 +11,11 @@ const InputText = (props) => {
         onFocus={() => setFocusColor("#8c10ab")}
         onBlur={() => setFocusColor("#212121")}
         autoFocus={false}
-        autoCapitalize={false}
+        autoCapitalize="none"
         autoCorrect={false}
         blurOnSubmit={true}
+        placeholder={props.placeholder}
+        placeholderTextColor="#b3b3b3"
       />
     </View>
   );
@@ -27,15 +29,15 @@ const style = StyleSheet.create({
   },
   input: {
     backgroundColor: "#171717",
-    height: 70,
+    height: 65,
     borderWidth: 3,
     borderRadius: 20,
     color: "white",
-    marginVertical: 10,
+    marginBottom: 10,
+    marginTop: 5,
     marginHorizontal: 10,
     paddingHorizontal: 40,
     fontSize: 18,
-    fon,
   },
 });
 

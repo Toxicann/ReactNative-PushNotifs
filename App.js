@@ -1,11 +1,13 @@
-import React from "react";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts, Michroma_400Regular } from "@expo-google-fonts/michroma";
 import AppLoading from "expo-app-loading";
 
-import Notification from "./src/screens/Notification";
 import LoginScreen from "./src/screens/LoginScreen";
+import SignupScreen from "./src/screens/SignupScreen";
+import Notification from "./src/screens/Notification";
+// import { Provider } from "react-native/Libraries/Text/TextAncestor";
+// import { store } from "./src/state/store";
 
 const MyTheme = {
   ...DefaultTheme.dark,
@@ -20,9 +22,11 @@ const MyTheme = {
 
 const App = () => {
   const Stack = createNativeStackNavigator();
+
   let [fontsloaded] = useFonts({
     Michroma_400Regular,
   });
+
   if (!fontsloaded) {
     return <AppLoading />;
   } else {
@@ -35,7 +39,7 @@ const App = () => {
               elevation: 5,
             },
             headerTitleStyle: {
-              fontSize: 40,
+              fontSize: 25,
               fontFamily: "Michroma_400Regular",
             },
           }}
@@ -44,14 +48,21 @@ const App = () => {
             name="Notification"
             component={Notification}
             options={{
-              title: "Notify",
+              title: "Notifs",
             }}
           />
           <Stack.Screen
             name="Login"
             component={LoginScreen}
             options={{
-              title: "Login",
+              title: "Log in",
+            }}
+          />
+          <Stack.Screen
+            name="Signup"
+            component={SignupScreen}
+            options={{
+              title: "Sign up",
             }}
           />
         </Stack.Navigator>
