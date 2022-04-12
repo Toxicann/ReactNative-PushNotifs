@@ -35,12 +35,15 @@ const LoginScreen = ({ navigation }) => {
 
     notificationListener.current =
       Notifications.addNotificationReceivedListener((notification) => {
-        setNotification(notification);
+        setNotification(notification.request.content.data);
       });
 
     responseListener.current =
       Notifications.addNotificationResponseReceivedListener(() => {
-        navigation.navigate("Signup");
+        console.log(notification.login);
+        if (notification.login == "Login Failed!") {
+          navigation.navigate("Signup");
+        }
       });
     return () => {
       Notifications.removeNotificationSubscription(
@@ -48,7 +51,7 @@ const LoginScreen = ({ navigation }) => {
       );
       Notifications.removeNotificationSubscription(responseListener.current);
     };
-  }, [notification.date]);
+  }, []);
 
   return (
     <View style={style.scaffold}>
@@ -70,6 +73,7 @@ const LoginScreen = ({ navigation }) => {
           onSubmit={(data) => {
             setEmail(data);
           }}
+          secureText={false}
         />
         <InputText
           title="Password"
@@ -77,29 +81,23 @@ const LoginScreen = ({ navigation }) => {
           onSubmit={(data) => {
             setPassword(data);
           }}
+          secureText={true}
         />
       </View>
       <TouchableOpacity
         style={style.button}
-        onPress={async () => {
+        onPressOut={async () => {
           await api.get("/credits").then((response) => {
             const user = response.data.find((user) => user.email == email);
-            if (typeof user === "undefined") {
-              user = {
-                email: "undefined",
-                password: "123456789",
-              };
-            }
-            console.log(typeof user);
             if (user.email === email && user.password === password) {
               setNotificationData("Login Success!");
-              // alert("success");
+              console.log(notificationData);
             } else {
               setNotificationData("Login Failed!");
-              // alert("failed");
+              console.log(notificationData);
             }
+            sendPushNotification(expoPushToken, notificationData);
           });
-          await sendPushNotification(expoPushToken, notificationData);
         }}
       >
         <Text style={{ fontSize: 20, color: "white" }}>Log in</Text>
@@ -131,6 +129,7 @@ const sendPushNotification = async (expoPushToken, notificationData) => {
     sound: "default",
     title: notificationData,
     body: `Date is: ${date}/${month}/${year} & Time is: ${hours}h: ${min}m: ${sec}s`,
+    data: { login: notificationData },
     android: {
       channelId: "push-notifs",
     },

@@ -30,6 +30,7 @@ const SignupScreen = ({ navigation }) => {
           onSubmit={(data) => {
             setUsername(data);
           }}
+          secureText={false}
         />
         <InputText
           title="Email"
@@ -37,6 +38,7 @@ const SignupScreen = ({ navigation }) => {
           onSubmit={(data) => {
             setEmail(data);
           }}
+          secureText={false}
         />
         <InputText
           title="Password"
@@ -44,6 +46,7 @@ const SignupScreen = ({ navigation }) => {
           onSubmit={(data) => {
             setPassword(data);
           }}
+          secureText={true}
         />
       </View>
       <TouchableOpacity

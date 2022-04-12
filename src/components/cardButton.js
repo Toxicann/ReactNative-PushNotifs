@@ -4,12 +4,7 @@ import { FontAwesome } from "@expo/vector-icons";
 
 const CardButton = (props) => {
   return (
-    <TouchableOpacity
-      style={style.card}
-      onPress={() => {
-        props.onSubmit(iconName);
-      }}
-    >
+    <TouchableOpacity style={style.card}>
       <FontAwesome name={props.iconName} size={28} color="white" />
     </TouchableOpacity>
   );

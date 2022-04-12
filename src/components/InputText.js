@@ -16,6 +16,7 @@ const InputText = (props) => {
         blurOnSubmit={true}
         placeholder={props.placeholder}
         placeholderTextColor="#b3b3b3"
+        secureTextEntry={props.secureText}
         onChangeText={(value) => {
           props.onSubmit(value);
         }}
